@@ -17,3 +17,15 @@
     color: $sr-red !important;
   }
 }
+
+.dropdown-item {
+  &:hover {
+    color: $sr-red !important;
+    background-color: white !important;
+  }
+}
+
+.dropdown-menu {
+  border-radius: 10% !important;
+
+}
