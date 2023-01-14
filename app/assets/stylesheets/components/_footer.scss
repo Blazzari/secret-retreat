@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
+  height: 65.52px !important;
   padding: 0px 12px;
   color: black;
   position: absolute;
@@ -21,6 +21,7 @@
 }
 .footer-links a:hover {
   color: $sr-red;
+  font-size: 19px;
 }
 .footer .fa-heart {
   color: #D23333;

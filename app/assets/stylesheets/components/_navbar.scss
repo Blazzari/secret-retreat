@@ -13,6 +13,7 @@
 
 .nav-link {
   color: black !important;
+  font-weight: bold !important;
   &:hover {
     color: $sr-red !important;
   }
@@ -27,5 +28,4 @@
 
 .dropdown-menu {
   border-radius: 10% !important;
-
 }
