@@ -50,6 +50,8 @@ gem "sassc-rails"
 
 #ajout des gems
 gem "devise"
+gem "sassc-rails"
+gem "font-awesome-sass", "~> 6.1"
 
 
 gem "autoprefixer-rails"
