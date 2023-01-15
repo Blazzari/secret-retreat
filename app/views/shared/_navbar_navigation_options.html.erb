@@ -1,8 +1,12 @@
  <% if user_signed_in? %>
-  <li class="nav-item active">
+  <li class="nav-item">
     <%= link_to "My bookings", "#", class: "nav-link" %>
   </li>
   <li class="nav-item">
     <%= link_to "My rooms", "#", class: "nav-link" %>
+  </li>
+<% else %>
+  <li class="nav-item">
+    <%= link_to "Add a room", "#", class: "nav-link" %>
   </li>
 <% end %>
