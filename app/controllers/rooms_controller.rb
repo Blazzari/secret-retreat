@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:show, :edit, :update, :destroy]
+  before_action :set_room, only: %i[show edit update destroy]
 
   def index
     @rooms = Room.all
@@ -21,7 +21,7 @@ class RoomsController < ApplicationController
     if @room.save
       redirect_to rooms_path, notice: 'Room was successfully created.'
     else
-       render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -39,11 +39,11 @@ class RoomsController < ApplicationController
   end
 
   private
-    def set_room
-      @room = Room.find(params[:id])
-    end
 
-    def room_params
-      params.require(:room).permit(:title, :address, :rating, :description, :price, :city, :guests_number)
-    end
+  def set_room
+    @room = Room.find(params[:id])
+  end
+
+  def room_params
+    params.require(:room).permit(:title, :address, :rating, :description, :price, :city, :guests_number)
   end
