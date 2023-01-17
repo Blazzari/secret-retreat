@@ -6,6 +6,5 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[create new]
     resources :reviews, only: %i[create new]
   end
-
   resources :bookings, only: %i[edit update destroy show]
 end
