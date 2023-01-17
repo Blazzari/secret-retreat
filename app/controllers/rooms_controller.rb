@@ -47,4 +47,3 @@ class RoomsController < ApplicationController
       params.require(:room).permit(:title, :address, :rating, :description, :price, :city, :guests_number)
     end
   end
-end
