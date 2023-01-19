@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <h1 class="text-center">Our best rooms to enjoy the best time</h1>
+  <p class ="text-center">We won't tell anything, we promise !</p>
+  <div class="row mt-5 p-10">
+    <% @rooms.each do |room| %>
+      <div class="col-md-4">
+        <div class="card mt-5 rounded-4 h-100 w-100" style="width: 18rem;">
+          <img src="https://www.club-rentabilite.fr/wp-content/uploads/2021/06/Image-3-1080x675.jpeg" class="card-img-top rounded-4" alt="...">
+          <div class="card-body">
+            <h5 class="card-title mt-4"><%= room[:title] %></h5>
+            <p class="card-text mt-2"><%= room[:description] %></p>
+            <a href="#" class="bouton-violet">See the room</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+</div>

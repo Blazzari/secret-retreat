@@ -6,5 +6,22 @@
 @import "footer";
 @import "body";
 
+.container {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.bouton-violet {
+  background-color:#BA55D3;
+  padding:10px;
+  color:white;
+  border-radius: 5px;
+  text-decoration : none;
+}
+
+a {
+  text-decoration: none;
+  color:white;
+}
+
 
 // rouge du logo rgb(180 26 0);
