@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(room_params)
+    @review = Review.new(review_params)
     @review.room = @room
     if @review.save
       redirect_to room_path(@room), notice: 'Review was successfully added.'
@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
     @room = Room.find(params[:room_id])
   end
 
-  def room_params
+  def review_params
     params.require(:review).permit(:content, :review_rating)
   end
 end
