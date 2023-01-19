@@ -9,7 +9,7 @@
           <div class="card-body">
             <h5 class="card-title mt-4"><%= room[:title] %></h5>
             <p class="card-text mt-2"><%= room[:description] %></p>
-            <a href="#" class="button">See the room</a>
+            <%= link_to "See details", room_path(room), class: "button ms-2" %>
           </div>
         </div>
       </div>

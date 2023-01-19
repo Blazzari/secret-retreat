@@ -1,10 +1,10 @@
 <div class="container mt-5">
-  <div class="d-flex justify-content-between mb-2">
+  <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
       <h1 class="text-left"><%= @room.title %></h1>
         <div class="d-inline-flex align-items-center">
-          <h3 class ="me-3"><i class="fa-solid fa-star me-2"></i><%= @room.rating %></h3>
-          <h3><i class="fa-solid fa-map-location-dot me-2"></i><%= "#{@room.address}, #{@room.city} " %></h3>
+          <h4 class ="me-3 mb-0"><i class="fa-solid fa-star me-2"></i><%= @room.rating %></h4>
+          <h4 class ="mb-0"><i class="fa-solid fa-map-location-dot me-2 mb-0"></i><%= "#{@room.address}, #{@room.city} " %></h4>
         </div>
     </div>
 
@@ -13,13 +13,18 @@
     </div>
   </div>
 
-  <%= image_tag "love room 1.jpeg", alt: "Secret retreat",  style: 'height:800px; width:auto;' %>
+  <%= image_tag "love room 1.jpeg", alt: "Secret retreat",  style: 'height:800px; width:auto;', class: "rounded-4 mb-4" %>
 
   <div>
-    <h3><%= @room.price %></h3>
-    <h3><%= @room.guests_number %></h3>
+    <div class="d-flex justify-content-start align-items-center mb-4">
+      <div class="d-inline-flex align-items-center">
+        <h4 class ="me-3 mb-0"><i class="fa-solid fa-dollar-sign me-2"></i><%= @room.price %></h4>
+        <h4 class ="mb-0"><i class="fa-solid fa-user-group me-2"></i><%= @room.guests_number %></h4>
+      </div>
+      <div>
+        <%= link_to "Book room", rooms_path, class: "button ms-2" %>
+      </div>
+    </div>
     <p><%= @room.description %></p>
-
   </div>
-
 </div>
