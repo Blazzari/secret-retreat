@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <div class="mb-2">
+    <div>
+      <h1 class="text-left"><%= @room.title %></h1>
+      <div class="d-inline-flex align-items-center">
+        <h3 class ="me-3"><i class="fa-solid fa-star me-2"></i><%= @room.rating %></h3>
+        <h3><i class="fa-solid fa-map-location-dot me-2"></i><%= "#{@room.address}, #{@room.city} " %></h2>
+      </div>
+    </div>
+      <%= link_to "Back to rooms", rooms_path, class: "btn " %>
+    <div>
+      link
+
+    </div>
+
+  </div>
+
+  <%= image_tag "love room 1.jpeg", alt: "Secret retreat",  style: 'height:800px; width:auto;' %>
+
+  <div>
+    <p><%= @room.description %></p>
+
+  </div>
+</div>
