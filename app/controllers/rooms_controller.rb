@@ -38,6 +38,9 @@ class RoomsController < ApplicationController
     redirect_to rooms_path, notice: 'Room was successfully destroyed.'
   end
 
+
+
+
   private
 
   def set_room
@@ -47,3 +50,4 @@ class RoomsController < ApplicationController
   def room_params
     params.require(:room).permit(:title, :address, :rating, :description, :price, :city, :guests_number)
   end
+end
