@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'reviews/new'
   get 'reviews/create'
   devise_for :users
-  root to: "pages#home"
+  root to: "rooms#index"
 
   resources :rooms do
     resources :bookings, only: %i[create new]
