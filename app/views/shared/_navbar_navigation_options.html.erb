@@ -1,5 +1,8 @@
  <% if user_signed_in? %>
   <li class="nav-item">
+    <%= link_to "Add a room", new_room_path, class: "nav-link" %>
+  </li>
+  <li class="nav-item">
     <%= link_to "My bookings", "#", class: "nav-link" %>
   </li>
   <li class="nav-item">

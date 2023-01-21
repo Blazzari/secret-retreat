@@ -1,0 +1,16 @@
+<div class="card rounded-4 p-3 container mb-5 mt-5">
+  <h3>Create your room</h3>
+   <%= simple_form_for [@room] do |f| %>
+    <%= f.input :title %>
+    <div>
+      <%= f.input :address %>
+      <%= f.input :city %>
+    </div>
+    <%= f.input :description %>
+    <div>
+      <%= f.input :price %>
+      <%= f.input :guests_number %>
+    </div>
+    <%= f.submit "Create room", class: "button" %>
+  <% end %>
+</div>
