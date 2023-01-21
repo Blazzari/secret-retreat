@@ -1,6 +1,10 @@
 class BookingsController < ApplicationController
   before_action :set_room, only: %i[create]
 
+  def show
+    @booking = Booking.find(params[:id])
+  end
+
   def new
     @room = Room.find(params[:room_id])
     @booking = Booking.new
@@ -27,6 +31,7 @@ class BookingsController < ApplicationController
   def set_room
     @room = Room.find(params[:room_id])
   end
+
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date)

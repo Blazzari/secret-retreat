@@ -1,8 +1,8 @@
 <div class="container mt-5">
-  <h1>Book the flat for a memorable moment !</h1>
+  <h1>Book the room for a memorable moment !</h1>
   <%= simple_form_for [@room, @booking] do |f| %>
     <%= f.input :start_date %>
     <%= f.input :end_date %>
-    <%= f.submit "Submit review", class: "btn btn-primary" %>
+    <%= f.submit "Book my room", class: "btn btn-primary" %>
   <% end %>
 </div>
