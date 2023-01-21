@@ -22,7 +22,7 @@
         <h4 class ="mb-0"><i class="fa-solid fa-user-group me-2"></i><%= @room.guests_number %></h4>
       </div>
       <div>
-        <%= link_to "Book room", rooms_path, class: "button ms-2" %>
+        <%= link_to "Book room", new_room_booking_path(@room), class: "button ms-2" %>
       </div>
     </div>
     <p><%= @room.description %></p>
