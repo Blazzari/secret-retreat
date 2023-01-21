@@ -38,9 +38,6 @@ class RoomsController < ApplicationController
     redirect_to rooms_path, notice: 'Room was successfully destroyed.'
   end
 
-
-
-
   private
 
   def set_room

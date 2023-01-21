@@ -1,5 +1,6 @@
 puts "new seed launched, destroying old users !"
-
+Room.destroy_all
+Review.destroy_all
 User.destroy_all
 
 puts "create 3 new users !"
@@ -11,8 +12,6 @@ user_3 = User.create!({ email: "user3@mail.com", password: "u3u3u3" })
 puts "3 new users created !"
 
 puts "new seed launched, destroying old rooms !"
-
-Room.destroy_all
 
 puts "create 4 new rooms !"
 
@@ -45,4 +44,17 @@ Room.create!(title: "Budget Room so everyone can enjoy",
     city: "London",
     guests_number: 1)
 
-    puts " 4 new rooms created !"
+puts " 4 new rooms created !"
+
+puts "create 3 new reviews for every room !"
+
+@rooms = Room.all
+
+@rooms.each do |room|
+  puts "create reviews for room #{room.id}"
+  Review.create!(content: "A very nice place", review_rating: 5, room_id: room.id)
+  Review.create!(content: "I had greate fun lovely time", review_rating: 4, room_id: room.id)
+  Review.create!(content: "The bed wasn't made when i arrived, not cool", review_rating: 3, room_id: room.id)
+end
+
+puts "all review created !"
