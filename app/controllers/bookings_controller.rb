@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_room, only: %i[create]
+  before_action :set_price, only: %i[show]
 
   def show
     @booking = Booking.find(params[:id])
@@ -35,5 +36,13 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date)
+  end
+
+  def set_price
+    @booking = Booking.find(params[:id])
+    @room = Room.find(@booking.room_id)
+    @duration = @booking.end_date - @booking.start_date
+    @duration = @duration.to_i
+    @price = @duration * @room.price
   end
 end

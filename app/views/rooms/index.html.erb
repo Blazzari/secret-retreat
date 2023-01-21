@@ -1,15 +1,16 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
   <h1 class="text-center">Our best rooms to enjoy the best time</h1>
   <p class ="text-center">We won't tell anything, we promise !</p>
-  <div class="row mt-5 p-10">
+  <div class="row mt-2 p-10">
     <% @rooms.each do |room| %>
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <div class="card mt-5 rounded-4 h-100 w-100" style="width: 18rem;">
           <img src="https://www.club-rentabilite.fr/wp-content/uploads/2021/06/Image-3-1080x675.jpeg" class="card-img-top rounded-4" alt="...">
           <div class="card-body">
             <h5 class="card-title mt-4"><%= room[:title] %></h5>
             <p class="card-text mt-2"><%= room[:description] %></p>
-            <%= link_to "See details", room_path(room), class: "button ms-2" %>
+            <p class ="me-3 mb-4"><i class="fa-solid fa-dollar-sign me-2"></i><%= room.price %> - <i class="fa-solid fa-user-group me-2"></i><%= room.guests_number %></p>
+            <%= link_to "See more", room_path(room), class: "button" %>
           </div>
         </div>
       </div>
