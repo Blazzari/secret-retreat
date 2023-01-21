@@ -11,6 +11,9 @@
       <%= f.input :price %>
       <%= f.input :guests_number %>
     </div>
-    <%= f.submit "Create room", class: "button" %>
+    <div class="d-flex justify-content-start align-items-center">
+      <%= f.submit "Create room", class: "button" %>
+      <%= link_to "Back to rooms", rooms_path, class: "button ms-3" %>
+    </div>
   <% end %>
 </div>
