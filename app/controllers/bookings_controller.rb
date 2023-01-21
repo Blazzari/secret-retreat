@@ -2,14 +2,16 @@ class BookingsController < ApplicationController
   before_action :set_room, only: %i[create]
 
   def new
+    @room = Room.find(params[:room_id])
     @booking = Booking.new
   end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.room = @room
+    @booking.user = current_user
     if @booking.save
-      redirect_to room_path(@room), notice: 'Booking was successfully added.'
+      redirect_to booking_path(@booking), notice: 'Booking was successfully added.'
     else
       render :new, status: :unprocessable_entity
     end
