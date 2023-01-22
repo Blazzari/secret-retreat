@@ -1,5 +1,6 @@
 puts "new seed launched, destroying old users !"
 Room.destroy_all
+Booking.destroy_all
 Review.destroy_all
 User.destroy_all
 
@@ -18,7 +19,7 @@ puts "create 4 new rooms !"
 # db/seeds.rb
 
 Room.create!(title: "Cozy love room in the city of love",
-    address: "123 avenue du Trocadéro, 75116, Paris",
+    address: "123 avenue du Trocadéro",
     rating: 4,
     description: "A cozy love room in the heart of the city.",
     price: 65.00,
@@ -27,21 +28,21 @@ Room.create!(title: "Cozy love room in the city of love",
     guests_number: 2)
 
 Room.create!(title: "Luxury Suite for anything you want",
-    address: "456 Park Ave, New Yorj USA",
+    address: "33 rue viala",
     rating: 5,
     description: "A luxurious suite with a view of the city.",
     price: 150.00,
     user_id: user_2.id,
-    city: "New york",
+    city: "Paris",
     guests_number: 4)
 
 Room.create!(title: "Budget Room so everyone can enjoy",
-    address: "789 Elm St, London, England",
+    address: "127 avenue victor hugo",
     rating: 3,
     description: "A budget-friendly room for everybody.",
     price: 40.00,
     user_id: user_3.id,
-    city: "London",
+    city: "Paris",
     guests_number: 1)
 
 puts " 4 new rooms created !"
