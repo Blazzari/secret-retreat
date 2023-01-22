@@ -1,8 +1,18 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: %i[show edit update destroy]
+  before_action :search, only: %i[index]
 
   def index
     @rooms = Room.all
+  end
+
+  def search
+    @query = {
+      city_query: params[:city],
+      guests_query: params[:guests],
+      min_price_query: params[:min_price],
+      max_price_query: params[:max_price]
+    }
   end
 
   def show
