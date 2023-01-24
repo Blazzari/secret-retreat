@@ -1,15 +1,5 @@
 <div class="container mt-5 mb-5">
-  <div>
-    <%= form_with url: "/rooms", method: :get do |form| %>
-      <%= form.text_field :city, placeholder: 'City'%>
-      <%= form.number_field :guests, placeholder: 'Number of guests', in: 1..10, step: 1%>
-      <%= form.number_field :min_price, placeholder: 'Min price', in: 0..1000, step: 10 %>
-      <%= form.number_field :max_price, placeholder: 'Maxprice', in: 0..1000, step: 10 %>
-      <%= form.submit "Search" %>
-    <% end %>
-  </div>
-
-  <h3 class="text-center">Our best rooms to enjoy the best time</h3>
+  <h3 class="text-center">Our best rooms... to enjoy the best time</h3>
   <p class ="text-center">We won't tell anything, we promise !</p>
   <div class="row mt-2 p-10">
     <% @rooms.each do |room| %>
