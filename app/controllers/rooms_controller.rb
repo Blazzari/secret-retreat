@@ -4,15 +4,17 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.all
+    @rooms = @rooms.where("city ILIKE ?", "%#{@city}%") unless @city.empty? || @city.nil?
+    @rooms = @rooms.where(guests_number: @guests) unless @guests.empty? || @guests.nil?
+    @rooms = @rooms.where(price: @min_price..) unless @min_price.empty? || @min_price.nil?
+    @rooms = @rooms.where(price: ..@max_price) unless @max_price.empty? || @max_price.nil?
   end
 
   def search
-    @query = {
-      city_query: params[:city],
-      guests_query: params[:guests],
-      min_price_query: params[:min_price],
-      max_price_query: params[:max_price]
-    }
+    @city = params[:city].to_s
+    @guests = params[:guests].to_s
+    @min_price = params[:min_price].to_s
+    @max_price = params[:max_price].to_s
   end
 
   def show
