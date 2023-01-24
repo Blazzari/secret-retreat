@@ -4,10 +4,10 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.all
-    @rooms = @rooms.where(city: @query[city_query:]) unless @query[city_query:].empty?
-    @rooms = @rooms.where(city: @query[city_query:]) unless @query[city_query:].empty?
-    @rooms = @rooms.where(city: @query[city_query:]) unless @query[city_query:].empty?
-    @rooms = @rooms.where(city: @query[city_query:]) unless @query[city_query:].empty?
+    @rooms = @rooms.where("city ILIKE ?", "%#{@query[:city_query]}%") unless @query[:city_query].empty?
+    @rooms = @rooms.where(guests_number: @query[:guests_query]) unless @query[:guests_query].empty?
+    @rooms = @rooms.where(price: @query[:min_price_query]..) unless @query[:min_price_query].empty?
+    @rooms = @rooms.where(price: ..@query[:max_price_query]) unless @query[:max_price_query].empty?
   end
 
   def search
@@ -17,7 +17,6 @@ class RoomsController < ApplicationController
       min_price_query: params[:min_price],
       max_price_query: params[:max_price]
     }
-    raise
   end
 
   def show
