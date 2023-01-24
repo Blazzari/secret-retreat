@@ -1,4 +1,4 @@
-<div class="card rounded-4 p-3 container mt-5 mb-5">
+<div class="card rounded-4 p-4 container mt-5 mb-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
       <h1 class="text-left"><%= @room.title %></h1>
@@ -7,13 +7,20 @@
           <h4 class ="mb-0"><i class="fa-solid fa-map-location-dot me-2 mb-0"></i><%= "#{@room.address}, #{@room.city} " %></h4>
         </div>
     </div>
-
-    <div>
-      <%= link_to "Back to rooms", rooms_path, class: "button" %>
-    </div>
   </div>
 
-  <%= image_tag "love room 1.jpeg", alt: "Secret retreat",  style: "height:800px; width:auto;", class: "rounded-4 mb-4" %>
+  <div class="d-flex justify-content-evenly">
+    <div class="mb-4">
+        <% if @room.photo.attached?  %>
+          <%= cl_image_tag @room.photo.key, height: 400, width: 600, crop: :fill, class: "rounded-4 me-3" %>
+        <% else %>
+          <img src="https://secret-room-toulouse.hotelmix.fr/data/Photos/r1920x672/13154/1315438/1315438501/Secret-Night-Apartment-Toulouse-Exterior.JPEG" alt="default room" style="height:400px; width:600px;" class="rounded-4 me-3">
+        <% end %>
+    </div>
+    <div>
+      <p class= "card rounded-4 p-3", style="height:400px; width:600px;"><%= @room.description %></p>
+    </div>
+  </div>
 
   <div>
     <div class="d-flex justify-content-start align-items-center mb-4">
@@ -21,21 +28,23 @@
         <h4 class ="me-3 mb-0"><i class="fa-solid fa-dollar-sign me-2"></i><%= @room.price.to_i %></h4>
         <h4 class ="mb-0"><i class="fa-solid fa-user-group me-2"></i><%= @room.guests_number %></h4>
       </div>
-      <div>
-        <%= link_to "Book room", new_room_booking_path(@room), class: "button ms-2" %>
-      </div>
     </div>
     <div>
-      <p class= "mb-2">Description</p>
-      <p class= "card rounded-4 p-3"><%= @room.description %></p>
+   <div class="d-flex justify-content-start align-items-center mb-4">
+      <div>
+        <%= link_to "Book room", new_room_booking_path(@room), class: "button me-2" %>
+      </div>
+      <div>
+        <%= link_to "Back to rooms", rooms_path, class: "button" %>
+      </div>
     </div>
 
     <div>
       <p class= "mb-2">Reviews</p>
-      <div class="card rounded-4">
+      <div class="card rounded-4" style="overflow:hidden;">
         <ul class="list-group list-group-flush">
           <% @room.reviews.each do |review|%>
-            <li class="list-group-item p-3">
+            <li class="list-group-item p-2">
               <div>
                 <p class = "mb-0">Rating : <%= review.review_rating %> <i class="fa-solid fa-star me-2"></i></p>
                 <p class = "mb-0"><%= review.content %></p>
