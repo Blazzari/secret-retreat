@@ -17,6 +17,11 @@ class RoomsController < ApplicationController
     @max_price = params[:max_price].to_s
   end
 
+  def my_rooms
+    @userid = current_user.id
+    @rooms = Room.where(user_id: @userid)
+  end
+
   def show
   end
 
