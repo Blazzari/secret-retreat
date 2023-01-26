@@ -7,18 +7,17 @@
         <div class="card mt-3 rounded-4 h-100 w-100" style="width: 18rem;">
 
           <% if room.photo.attached?  %>
-            <%= cl_image_tag room.photo.key, crop: :fill, class: "card-img-top rounded-4 rounded-bottom" %>
+            <%= cl_image_tag room.photo.key, crop: :fill, class: "card-img-top rounded-4 rounded-bottom h-50" %>
           <% else %>
             <img src="https://secret-room-toulouse.hotelmix.fr/data/Photos/r1920x672/13154/1315438/1315438501/Secret-Night-Apartment-Toulouse-Exterior.JPEG" alt="default room" class="card-img-top rounded-4 rounded-bottom">
           <% end %>
 
           <div class="card-body">
-            <h5 class="card-title mt-4"><%= room[:title] %></h5>
-            <p class="card-text mt-2"><%= room[:description] %></p>
+            <h5 class="card-title mt-4" style="text-overflow: ellipsis;"><%= room.title %></h5>
+            <p class="card-text mt-2"><i class="fa-solid fa-location-dot me-2"></i><%= room.city %></p>
             <p class ="me-3 mb-4"><i class="fa-solid fa-dollar-sign me-2"></i><%= room.price.to_i %> - <i class="fa-solid fa-user-group me-2"></i><%= room.guests_number %></p>
             <%= link_to "See more", room_path(room), class: "button" %>
           </div>
-
         </div>
       </div>
     <% end %>
