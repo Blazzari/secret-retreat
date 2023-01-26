@@ -1,8 +1,8 @@
 puts "new seed launched, destroying old users !"
-Room.destroy_all
-Booking.destroy_all
-Review.destroy_all
-User.destroy_all
+Booking.delete_all
+Review.delete_all
+Room.delete_all
+User.delete_all
 
 puts "create 3 new users !"
 
@@ -25,7 +25,9 @@ Room.create!(title: "Cozy love room in the city of love",
     price: 65.00,
     user_id: user_1.id,
     city: "Paris",
-    guests_number: 2)
+    guests_number: 2
+
+  )
 
 Room.create!(title: "Luxury Suite for anything you want",
     address: "33 rue viala",
