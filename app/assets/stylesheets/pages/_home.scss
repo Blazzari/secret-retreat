@@ -1,10 +1,45 @@
 // Specific CSS for your home-page
 
+.banner h1 {
+  color:white;
+  font-size: 50px;
+}
+
+.banner p {
+  color:white;
+  font-size: 20px;
+}
+
 .home-page-presentation {
   padding: 50px;
-  background-color: #A52A2A;
+  background-color: white;
 }
 
 .home-page-presentation h1 {
+  text-align: center;
+}
+
+.home-page-presentation p {
+  text-align: center;
+  font-size: 20px;
+}
+
+.home-page-button {
+  background-color:$sr-red;
+  padding:10px;
+  color:white;
+  border-radius: 5px;
+  text-decoration : none;
+  border: none;
+  margin-top: 50px;
+  &:hover {
+    background-color: white;
+    color: black;
+    border: black 1px solid;
+  }
+}
+
+.card-info-body i {
+  color:#A52A2A;
   text-align: center;
 }
