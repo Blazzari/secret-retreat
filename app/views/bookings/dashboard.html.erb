@@ -1,0 +1,45 @@
+<div class ="container mt-4 mb-5">
+  <div class="d-flex justify-content-start align-items-center mb-4">
+    <div>
+      <%= link_to "My bookings", dashboard_path, class: "button me-3" %>
+    </div>
+    <div>
+      <%= link_to "My booked rooms",dashboard_booked_path , class: "button" %>
+    </div>
+  </div>
+
+  <h2 class= "mb-2">Rooms you booked :</h2>
+
+  <% @bookings.each do |booking| %>
+    <div class="d-flex  flex-row card rounded-4 p-3 mb-4">
+      <div>
+        <%= cl_image_tag booking.room.photo.key, height: 100, width: 150, crop: :fill, class: "rounded-4 me-3" %>
+      </div>
+      <div class="d-flex justify-content-between align-items-center w-100 mb-0">
+          <div class="mb-2">
+            <h4>Your stay at "<%= booking.room.title %>"</h4>
+            <p class="mb-2">From : <%= booking.start_date %> - To : <%= booking.end_date %></p>
+            <p class="mb-2"><i class="fa-sharp fa-solid fa-calendar-days me-2"></i><%= booking.duration %> days - <%= booking.price %> <i class="fa-solid fa-dollar-sign me-2"></i></p>
+
+            <% if booking.validation = "pending" %>
+              <p class="mb-0"><i class="fa-solid fa-hourglass-half"></i> Booking to be confirmed</p>
+            <% elsif booking.validation = "confirmed" %>
+              <p class="mb-0"><i class="fa-solid fa-check"></i> Booking confirmed</p>
+            <% elsif booking.validation = "rejected"%>
+              <p class="mb-0"><i class="fa-solid fa-check"></i> Booking rejected</p>
+            <% end %>
+          </div>
+
+          <div class="d-flex justify-content-start align-items-center">
+            <%= link_to "Room details", room_path(booking.room_id), class: "button me-2" %>
+            <% if booking.validation == "rejected" %>
+              <%= link_to "Delete booking", booking_path(booking), data: {turbo_method: :delete}, class: "button" %>
+            <% else %>
+              <%= link_to "Cancel booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking ?"}, class: "button" %>
+            <% end %>
+          </div>
+      </div>
+    </div>
+  <% end%>
+
+</div>

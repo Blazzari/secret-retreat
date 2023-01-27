@@ -1,10 +1,16 @@
 require "open-uri"
 
+puts "new seed launched, destroying old booking / review / rooms / users !"
+
 puts "new seed launched, destroying old users !"
 Booking.delete_all
+puts "Bookings deleted"
 Review.delete_all
+puts "Reviews deleted"
 Room.delete_all
+puts "Rooms deleted"
 User.delete_all
+puts "Users deleted"
 
 puts "create 3 new users !"
 
@@ -14,7 +20,6 @@ user_3 = User.create!({ email: "user3@mail.com", password: "u3u3u3" })
 
 puts "3 new users created !"
 
-puts "new seed launched, destroying old rooms !"
 
 puts "create new rooms !"
 
@@ -34,12 +39,14 @@ puts "create new rooms !"
 @room.photo.attach(io: @image, filename: "#{@room.title}.jpg", content_type: "image/jpg")
 @room.save
 
+puts "room 1/10 created"
+
 @room = Room.create!(title: "Luxury Suite for anything you want",
   address: "33 rue viala",
   rating: 5,
   description: "A luxurious suite with a view of the city.",
   price: 150.00,
-  user_id: user_2.id,
+  user_id: user_1.id,
   city: "Paris",
   guests_number: 4
 )
@@ -47,6 +54,8 @@ puts "create new rooms !"
 @image = URI.open("https://res.cloudinary.com/dkto58vbg/image/upload/v1674594712/development/chambre_vfty9k.jpg")
 @room.photo.attach(io: @image, filename: "#{@room.title}.jpg", content_type: "image/jpg")
 @room.save
+
+puts "room 2/10 created"
 
 @room = Room.create!(title: "Budget Room so everyone can enjoy",
   address: "127 avenue victor hugo",
@@ -61,6 +70,8 @@ puts "create new rooms !"
 @image = URI.open("https://res.cloudinary.com/dkto58vbg/image/upload/v1674594708/development/thumb_1200_6096fd480544d_l5q35p.jpg")
 @room.photo.attach(io: @image, filename: "#{@room.title}.jpg", content_type: "image/jpg")
 @room.save
+
+puts "room 3/10 created"
 
 @room = Room.create!(
   title: "Gite privatif avec spa et piscine",
@@ -77,6 +88,8 @@ puts "create new rooms !"
 @image = URI.open("https://res.cloudinary.com/dkto58vbg/image/upload/v1674594708/development/thumb_1200_5e3333e4c7e10_btulje.jpg")
 @room.photo.attach(io: @image, filename: "#{@room.title}.jpg", content_type: "image/jpg")
 @room.save
+
+puts "room 4/10 created"
 
 @room = Room.create!(
   title: "Nuit hors du temps suite ",
@@ -96,6 +109,8 @@ puts "create new rooms !"
 @room.photo.attach(io: @image, filename: "#{@room.title}.jpg", content_type: "image/jpg")
 @room.save
 
+puts "room 5/10 created"
+
 @room = Room.create!(
   title: "Vue panoramique sur la ville",
   address: "Toulouse",
@@ -110,6 +125,8 @@ puts "create new rooms !"
 @image = URI.open("https://res.cloudinary.com/dkto58vbg/image/upload/v1674594707/development/airbnb_lyon_Le-nid-des-amants-du-Vieux-Lyon-745x497_nxfn2r.jpg")
 @room.photo.attach(io: @image, filename: "#{@room.title}.jpg", content_type: "image/jpg")
 @room.save
+
+puts "room 6/10 created"
 
 @room = Room.create!(
   title: "Les granges d\’haillancourt",
@@ -126,6 +143,8 @@ puts "create new rooms !"
 @room.photo.attach(io: @image, filename: "#{@room.title}.jpg", content_type: "image/jpg")
 @room.save
 
+puts "room 7/10 created"
+
 @room = Room.create!(
   title: "Chambre amoureuse",
   address:"Caen",
@@ -140,6 +159,8 @@ puts "create new rooms !"
 @image = URI.open("https://res.cloudinary.com/dkto58vbg/image/upload/v1674594707/development/210a9415_d1agd0.jpg")
 @room.photo.attach(io: @image, filename: "#{@room.title}.jpg", content_type: "image/jpg")
 @room.save
+
+puts "room 8/10 created"
 
 @room = Room.create!(
   title: "Chambre de charme avec spa privatif",
@@ -157,6 +178,8 @@ puts "create new rooms !"
 @room.photo.attach(io: @image, filename: "#{@room.title}.jpg", content_type: "image/jpg")
 @room.save
 
+puts "room 9/10 created"
+
 @room = Room.create!(
   title:"Chambre baroque",
   address: "la Rochelle",
@@ -173,6 +196,8 @@ puts "create new rooms !"
 @room.photo.attach(io: @image, filename: "#{@room.title}.jpg", content_type: "image/jpg")
 @room.save
 
+puts "room 10/10 created"
+
 puts "New rooms created !"
 
 puts "create 3 new reviews for every room !"
@@ -187,3 +212,35 @@ puts "create 3 new reviews for every room !"
 end
 
 puts "all review created !"
+
+
+puts "create bookings for user1"
+
+@room_1 = Room.where(title: "Cozy love room in the city of love")
+@room_2 = Room.where(title: "Luxury Suite for anything you want")
+
+@booking1 = Booking.new(
+  start_date: "2023-02-03",
+  end_date: "2023-02-04",
+  room_id: @room_1[0],
+  user_id: user_2.id
+)
+
+@booking1.save
+
+puts "Bookings for user_1 created"
+#<Booking id: 31, start_date: "2023-01-27", end_date: "2023-01-30", room_id: 178, user_id: 52, created_at: "2023-01-27 00:52:18.712486000 +0000", updated_at: "2023-01-27 00:52:18.712486000 +0000", duration: 3, price: 450, validation: true>
+
+# create_table "bookings", force: :cascade do |t|
+#   t.date "start_date"
+#   t.date "end_date"
+#   t.bigint "room_id", null: false
+#   t.bigint "user_id", null: false
+#   t.datetime "created_at", null: false
+#   t.datetime "updated_at", null: false
+#   t.integer "duration"
+#   t.integer "price"
+#   t.boolean "validation"
+#   t.index ["room_id"], name: "index_bookings_on_room_id"
+#   t.index ["user_id"], name: "index_bookings_on_user_id"
+# end

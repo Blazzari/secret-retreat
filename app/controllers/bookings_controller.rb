@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_room, only: %i[create]
-  before_action :set_price, only: %i[show]
+  before_action :set_price, only: %i[create]
 
   def show
     @booking = Booking.find(params[:id])
@@ -11,20 +11,39 @@ class BookingsController < ApplicationController
     @booking = Booking.new
   end
 
+  def dashboard
+    @userid = current_user.id
+    @bookings = Booking.where(user_id: @userid)
+  end
+
+  def dashboard_booked
+    @userid = current_user.id
+    @rooms = Room.where(user_id: @userid)
+  end
+
   def create
-    @booking = Booking.new(booking_params)
     @booking.room = @room
     @booking.user = current_user
     if @booking.save
-      redirect_to booking_path(@booking), notice: 'Booking was successfully added.'
+      @booking.price = @price
+      @booking.duration = @duration
+      @booking.validation = "pending"
+      @booking.save
+      redirect_to dashboard_path, notice: 'Booking was successfully added.'
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @booking.destroy
-    redirect_to rooms_path, notice: 'Booking was successfully destroyed.'
+    @booking = Booking.find(params[:id])
+    @booking.delete
+    redirect_to dashboard_path, notice: 'Booking was successfully destroyed.'
+  end
+
+  def update
+    
+
   end
 
   private
@@ -33,16 +52,15 @@ class BookingsController < ApplicationController
     @room = Room.find(params[:room_id])
   end
 
-
   def booking_params
     params.require(:booking).permit(:start_date, :end_date)
   end
 
   def set_price
-    @booking = Booking.find(params[:id])
-    @room = Room.find(@booking.room_id)
+    @booking = Booking.new(booking_params)
     @duration = @booking.end_date - @booking.start_date
     @duration = @duration.to_i
     @price = @duration * @room.price
+    @price = @price.to_i
   end
 end
