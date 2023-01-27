@@ -1,6 +1,6 @@
 <div class="container mt-4 mb-5">
-  <h3 class="text-center">Our best rooms... to enjoy the best time</h3>
-  <p class ="text-center">We won't tell anything, we promise !</p>
+  <h3 class="text-center"><strong>Our best rooms... to enjoy the best time</strong></h3>
+  <p class ="text-center mb-2">We won't tell anything, we promise !</p>
   <div class="row mt-2 p-10">
     <% @rooms.each do |room| %>
       <div class="col-md-4 mb-4">
@@ -13,8 +13,8 @@
           <div class="card-body">
             <h5 class="card-title mt-4" style="text-overflow: ellipsis;"><%= room.title %></h5>
             <p class="card-text mt-2"><i class="fa-solid fa-location-dot me-2"></i><%= room.city %></p>
-            <p class ="mb-4"><i class="fa-solid fa-dollar-sign me-2"></i><%= room.price.to_i %> - <i class="fa-solid fa-user-group me-2"></i><%= room.guests_number %></p>
-            <%= link_to "See more", room_path(room), class: "button" %>
+            <p class ="mb-4"><i class="fa-solid fa-dollar-sign me-2"></i><%= room.price.to_i %> - <i class="fa-solid fa-user-group me-2"></i><%= room.guests_number %> - <i class="fa-solid fa-star me-2"></i><%= room.rating %>/5</p>
+            <%= link_to "See details", room_path(room), class: "button" %>
           </div>
         </div>
       </div>

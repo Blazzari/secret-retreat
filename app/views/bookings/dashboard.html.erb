@@ -8,10 +8,10 @@
     </div>
   </div>
 
-  <h2 class= "mb-2">Rooms you booked :</h2>
+  <h3 class = "mb-3"><strong>Rooms you booked :</strong></h3>
 
   <% @bookings.each do |booking| %>
-    <div class="d-flex  flex-row card rounded-4 p-3 mb-4">
+    <div class="d-flex  flex-row card rounded-4 p-3 mb-4 align-items-center">
       <div>
         <%= cl_image_tag booking.room.photo.key, height: 100, width: 150, crop: :fill, class: "rounded-4 me-3" %>
       </div>

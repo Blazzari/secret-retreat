@@ -41,9 +41,11 @@ class BookingsController < ApplicationController
     redirect_to dashboard_path, notice: 'Booking was successfully destroyed.'
   end
 
-  def update
-    
+  def edit
+  end
 
+  def update
+    raise
   end
 
   private
