@@ -1,9 +1,9 @@
- <div>
+ <div class = "d-flex align-items-center">
     <%= form_with url: "/rooms", method: :get do |form| %>
       <%= form.text_field :city, placeholder: 'City'%>
-      <%= form.number_field :guests, placeholder: 'Number of guests', in: 1..10, step: 1%>
-      <%= form.number_field :min_price, placeholder: 'Min price', in: 0..1000, step: 10 %>
-      <%= form.number_field :max_price, placeholder: 'Maxprice', in: 0..1000, step: 10 %>
-      <%= form.submit "Search" %>
+      <%= form.number_field :guests, placeholder: 'Guests number', in: 1..10, step: 1, class: "guests"%>
+      <%= form.number_field :min_price, placeholder: 'Min price', in: 0..1000, step: 10, class: "prices"%>
+      <%= form.number_field :max_price, placeholder: 'Maxprice', in: 0..1000, step: 10, class: "prices" %>
+      <%= form.submit "Search", class: "button",style: "display: none;"%>
     <% end %>
   </div>
