@@ -6,7 +6,7 @@
       <div class="col-md-4 mb-4">
         <div class="card mt-3 rounded-4 h-100 w-100" style="width: 18rem;">
           <% if room.photo.attached?  %>
-            <%= cl_image_tag room.photo.key, crop: :fill, class: "card-img-top rounded-4 rounded-bottom h-50" %>
+            <%= cl_image_tag room.photo.key, crop: :fill, class: "card-img-top rounded-4 rounded-bottom h-50 w-auto" %>
           <% else %>
             <img src="https://secret-room-toulouse.hotelmix.fr/data/Photos/r1920x672/13154/1315438/1315438501/Secret-Night-Apartment-Toulouse-Exterior.JPEG" alt="default room" class="card-img-top rounded-4 rounded-bottom">
           <% end %>
