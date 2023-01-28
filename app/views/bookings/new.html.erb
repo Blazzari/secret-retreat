@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <h1>Book the room for a memorable moment !</h1>
   <%= simple_form_for [@room, @booking] do |f| %>
-    <%= f.input :start_date %>
+    <%= f.input :start_date%>
     <%= f.input :end_date %>
     <%= f.submit "Submit booking", class: "button" %>
   <% end %>

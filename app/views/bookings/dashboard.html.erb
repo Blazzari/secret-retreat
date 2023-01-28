@@ -21,12 +21,12 @@
             <p class="mb-2">From : <%= booking.start_date %> - To : <%= booking.end_date %></p>
             <p class="mb-2"><i class="fa-sharp fa-solid fa-calendar-days me-2"></i><%= booking.duration %> days - <%= booking.price %> <i class="fa-solid fa-dollar-sign me-2"></i></p>
 
-            <% if booking.validation = "pending" %>
+            <% if booking.validation == "pending" %>
               <p class="mb-0"><i class="fa-solid fa-hourglass-half"></i> Booking to be confirmed</p>
-            <% elsif booking.validation = "confirmed" %>
+            <% elsif booking.validation == "confirmed" %>
               <p class="mb-0"><i class="fa-solid fa-check"></i> Booking confirmed</p>
-            <% elsif booking.validation = "rejected"%>
-              <p class="mb-0"><i class="fa-solid fa-check"></i> Booking rejected</p>
+            <% elsif booking.validation == "rejected"%>
+              <p class="mb-0"><i class="fa-solid fa-xmark"></i> Booking rejected</p>
             <% end %>
           </div>
 

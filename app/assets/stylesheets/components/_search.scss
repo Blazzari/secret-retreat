@@ -1,12 +1,39 @@
+
+.global{
+  border: solid 1px black;
+  border-radius: 50px;
+  padding: 2px;
+}
+
+.section{
+  border: none;
+  padding: 0; 
+  background-color: white;
+  &::placeholder{
+    color: black;
+    text-indent: 5px;
+  }
+}
+
+.city{
+  width: 100px;
+}
+
 .prices {
   width: 92px;
+  border: none;
 }
 
 .guests{
   width: 135px;
+  border: none;
 }
 
-.button_size{
- padding: 10px;
- height: 20px;
+.submit{
+  background-color: $red;
+  color: white; 
+  &:hover {
+    background-color: white;
+    color: black;
+  }
 }
