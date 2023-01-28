@@ -1,6 +1,6 @@
 
 <div class="container mt-4 mb-5">
-  <div class="card rounded-4 p-4">
+  <div class="rounded-4 p-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <div>
         <h3 class="text-left"><strong><%= @room.title %></strong></h3>
@@ -11,16 +11,16 @@
       </div>
     </div>
 
-    <div class="d-flex justify-content-evenly">
-      <div class="mb-4">
+    <div class="d-flex justify-content-evenly mb-4">
+      <div class="w-50">
           <% if @room.photo.attached?  %>
-            <%= cl_image_tag @room.photo.key, height: 400, width: 600, crop: :fill, class: "rounded-4 me-2" %>
+            <%= cl_image_tag @room.photo.key, crop: :fill, class: "cover rounded-4 me-2 d-block h-100 w-100", style: "height: 400px;"%>
           <% else %>
             <img src="https://secret-room-toulouse.hotelmix.fr/data/Photos/r1920x672/13154/1315438/1315438501/Secret-Night-Apartment-Toulouse-Exterior.JPEG" alt="default room" style="height:400px; width:600px;" class="rounded-4 me-2">
           <% end %>
       </div>
-      <div>
-        <p class= "card rounded-4 p-3", style="height:400px; width:600px;"><%= @room.description %></p>
+      <div class= "w-50">
+        <p class= "rounded-4 p-3 w-100" style= "height: 400px;"><%= @room.description %></p>
       </div>
     </div>
 
