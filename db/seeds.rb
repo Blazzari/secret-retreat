@@ -26,7 +26,7 @@ puts "create new rooms !"
 # db/seeds.rb
 
 
-@room = Room.create!(title: "A Private Haven for Two",
+room_user_2 = Room.create!(title: "A Private Haven for Two",
   address: "123 street of love",
   rating: 4,
   description: "A cozy love room in the heart of the city.",
@@ -37,12 +37,12 @@ puts "create new rooms !"
 )
 
 @image = URI.open("https://res.cloudinary.com/dkto58vbg/image/upload/v1674594714/development/t%C3%A9l%C3%A9chargement_veuzfo.jpg")
-@room.photo.attach(io: @image, filename: "#{@room.title}.jpg", content_type: "image/jpg")
-@room.save
+room_user_2.photo.attach(io: @image, filename: "#{room_user_2.title}.jpg", content_type: "image/jpg")
+room_user_2.save
 
 puts "room 1/10 created"
 
-@room = Room.create!(title: "Sensual Escape",
+room_user = Room.create!(title: "Sensual Escape",
   address: "33 street of pleasure",
   rating: 5,
   description: "Indulge in a private and intimate setting perfect for lovers looking to spice up their love life.",
@@ -53,8 +53,8 @@ puts "room 1/10 created"
 )
 
 @image = URI.open("https://res.cloudinary.com/dkto58vbg/image/upload/v1674594712/development/chambre_vfty9k.jpg")
-@room.photo.attach(io: @image, filename: "#{@room.title}.jpg", content_type: "image/jpg")
-@room.save
+room_user.photo.attach(io: @image, filename: "#{room_user.title}.jpg", content_type: "image/jpg")
+room_user.save
 
 puts "room 2/10 created"
 
@@ -212,31 +212,22 @@ puts "all review created !"
 
 puts "create bookings for user1"
 
-@room_1 = Room.where(title: "Cozy love room in the city of love")
-@room_2 = Room.where(title: "Luxury Suite for anything you want")
-
 @booking1 = Booking.new(
   start_date: "2023-02-03",
   end_date: "2023-02-04",
-  room_id: @room_1[0],
-  user_id: user_2.id
+  room: room_user,
+  user: user_2
 )
 
-@booking1.save
+@booking1.save!
+
+@booking2 = Booking.new(
+  start_date: "2023-02-03",
+  end_date: "2023-02-04",
+  room: room_user_2,
+  user: user_2
+)
+
+@booking2.save!
 
 puts "Bookings for user_1 created"
-#<Booking id: 31, start_date: "2023-01-27", end_date: "2023-01-30", room_id: 178, user_id: 52, created_at: "2023-01-27 00:52:18.712486000 +0000", updated_at: "2023-01-27 00:52:18.712486000 +0000", duration: 3, price: 450, validation: true>
-
-# create_table "bookings", force: :cascade do |t|
-#   t.date "start_date"
-#   t.date "end_date"
-#   t.bigint "room_id", null: false
-#   t.bigint "user_id", null: false
-#   t.datetime "created_at", null: false
-#   t.datetime "updated_at", null: false
-#   t.integer "duration"
-#   t.integer "price"
-#   t.boolean "validation"
-#   t.index ["room_id"], name: "index_bookings_on_room_id"
-#   t.index ["user_id"], name: "index_bookings_on_user_id"
-# end
