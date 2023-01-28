@@ -35,10 +35,10 @@
 
                 <div class="d-flex justify-content-start align-items-center">
                   <% if booking.validation == "pending" %>
-                    <%= link_to "Confirm booking", confirm_booking_path(booking), data: {turbo_method: :patch, turbo_confirm: "Are you?"}, class: "button me-2" %>
-                    <%= link_to "Reject booking", reject_booking_path(booking), data: {turbo_method: :patch, turbo_confirm: "Are you?"}, class: "button" %>
+                    <%= link_to "Confirm booking", confirm_booking_path(booking), data: {turbo_method: :patch, turbo_confirm: "Are you sure you want to confirm this booking ?"}, class: "button me-2" %>
+                    <%= link_to "Reject booking", reject_booking_path(booking), data: {turbo_method: :patch, turbo_confirm: "Are you sure you want to reject this booking ?"}, class: "button" %>
                   <% elsif booking.validation == "confirmed"%>
-                    <%= link_to "Cancel booking", reject_booking_path(booking), data: {turbo_method: :patch, turbo_confirm: "Are you?"}, class: "button" %>
+                    <%= link_to "Reject booking", reject_booking_path(booking), data: {turbo_method: :patch, turbo_confirm: "Are you sure you want to reject this booking ?"}, class: "button" %>
                   <% end %>
                 </div>
             </div>
