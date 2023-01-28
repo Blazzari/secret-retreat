@@ -4,7 +4,7 @@
   <div class="row mt-2 p-10">
     <% @rooms.each do |room| %>
       <div class="col-md-4 mb-4">
-        <div class="card mt-3 rounded-4" style="width: 18rem;">
+        <div class="card mt-3 rounded-4">
           <% if room.photo.attached?  %>
             <%= cl_image_tag room.photo.key, crop: :fill, class: "card-img-top rounded-4 rounded-bottom h-50 w-auto" %>
           <% else %>
