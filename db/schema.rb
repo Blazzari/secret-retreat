@@ -51,7 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_26_233958) do
     t.datetime "updated_at", null: false
     t.integer "duration"
     t.integer "price"
-    t.boolean "validation"
+    t.string "validation"
     t.index ["room_id"], name: "index_bookings_on_room_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
