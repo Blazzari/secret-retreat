@@ -60,7 +60,7 @@ puts "room 2/10 created"
 
 @room = Room.create!(title: "Naughty Nights",
   address: "127 street of night",
-  rating: 3,
+  rating: 4,
   description: "Escape to a luxurious and sensual getaway designed for lovers to explore their desires.",
   price: 40.00,
   user_id: user_3.id,
