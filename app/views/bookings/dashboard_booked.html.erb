@@ -13,34 +13,37 @@
   <% @rooms.each do |room| %>
     <% bookings = room.bookings %>
       <% bookings.each do |booking| %>
-      <div class="d-flex flex-row card rounded-4 p-3 mb-4 align-items-center">
-        <div>
-          <%= cl_image_tag booking.room.photo.key, height: 100, width: 150, crop: :fill, class: "rounded-4 me-3" %>
-        </div>
-        <div class="d-flex justify-content-between align-items-center w-100 mb-0">
-            <div class="mb-2">
-              <h4>Booking for "<%= booking.room.title %>"</h4>
-              <p class="mb-2">From : <%= booking.start_date %> - To : <%= booking.end_date %></p>
-              <p class="mb-2"><i class="fa-sharp fa-solid fa-calendar-days me-2"></i><%= booking.duration %> days - <%= booking.price %> <i class="fa-solid fa-dollar-sign me-2"></i></p>
-
-              <% if booking.validation = "pending" %>
-                <p class="mb-0"><i class="fa-solid fa-hourglass-half"></i> Booking to be confirmed</p>
-              <% elsif booking.validation = "confirmed" %>
-                <p class="mb-0"><i class="fa-solid fa-check"></i> Booking confirmed</p>
-              <% elsif booking.validation = "rejected"%>
-                <p class="mb-0"><i class="fa-solid fa-check"></i> Booking rejected</p>
-              <% end %>
+        <% if booking.validation != "rejected" %>
+          <div class="d-flex flex-row card rounded-4 p-3 mb-4 align-items-center">
+            <div>
+              <%= cl_image_tag booking.room.photo.key, height: 100, width: 150, crop: :fill, class: "rounded-4 me-3" %>
             </div>
+            <div class="d-flex justify-content-between align-items-center w-100 mb-0">
+                <div class="mb-2">
+                  <h4>Booking for "<%= booking.room.title %>"</h4>
+                  <p class="mb-2">From : <%= booking.start_date %> - To : <%= booking.end_date %></p>
+                  <p class="mb-2"><i class="fa-sharp fa-solid fa-calendar-days me-2"></i><%= booking.duration %> days - <%= booking.price %> <i class="fa-solid fa-dollar-sign me-2"></i></p>
 
-            <div class="d-flex justify-content-start align-items-center">
-              <% if booking.validation = "pending" %>
-                <%= link_to "Confirm booking", booking_path(booking),  method: :update, class: "button me-2" %>
-                <%= link_to "Reject booking", booking_path(booking), class: "button" %>
-              <% end %>
+                  <% if booking.validation == "pending" %>
+                    <p class="mb-0"><i class="fa-solid fa-hourglass-half"></i> Booking to be confirmed</p>
+                  <% elsif booking.validation == "confirmed" %>
+                    <p class="mb-0"><i class="fa-solid fa-check"></i> Booking confirmed</p>
+                  <% elsif booking.validation == "rejected"%>
+                    <p class="mb-0"><i class="fa-solid fa-xmark"></i> Booking rejected</p>
+                  <% end %>
+                </div>
+
+                <div class="d-flex justify-content-start align-items-center">
+                  <% if booking.validation == "pending" %>
+                    <%= link_to "Confirm booking", confirm_booking_path(booking), data: {turbo_method: :patch, turbo_confirm: "Are you?"}, class: "button me-2" %>
+                    <%= link_to "Reject booking", reject_booking_path(booking), data: {turbo_method: :patch, turbo_confirm: "Are you?"}, class: "button" %>
+                  <% elsif booking.validation == "confirmed"%>
+                    <%= link_to "Cancel booking", reject_booking_path(booking), data: {turbo_method: :patch, turbo_confirm: "Are you?"}, class: "button" %>
+                  <% end %>
+                </div>
             </div>
-        </div>
-      </div>
+          </div>
+        <% end %>
     <% end %>
   <% end %>
-
 </div>

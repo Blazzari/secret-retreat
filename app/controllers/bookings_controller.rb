@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_room, only: %i[create]
+  before_action :set_booking, only: %i[confirm reject]
   before_action :set_price, only: %i[create]
 
   def show
@@ -35,6 +36,18 @@ class BookingsController < ApplicationController
     end
   end
 
+  def confirm 
+    @booking.validation = "confirmed"
+    @booking.save
+    redirect_to dashboard_booked_path
+  end 
+
+  def reject
+    @booking.validation = "rejected"
+    @booking.save
+    redirect_to dashboard_booked_path
+  end
+
   def destroy
     @booking = Booking.find(params[:id])
     @booking.delete
@@ -45,7 +58,7 @@ class BookingsController < ApplicationController
   end
 
   def update
-    raise
+    
   end
 
   private
@@ -53,6 +66,10 @@ class BookingsController < ApplicationController
   def set_room
     @room = Room.find(params[:room_id])
   end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end 
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date)
