@@ -36,7 +36,7 @@ room_user_2 = Room.create!(title: "A Private Haven for Two",
   guests_number: 2
 )
 
-@image = URI.open("https://res.cloudinary.com/dkto58vbg/image/upload/v1674594714/development/t%C3%A9l%C3%A9chargement_veuzfo.jpg")
+@image = URI.open("https://res.cloudinary.com/dkto58vbg/image/upload/v1674915923/development/0222k120008rco98m6B04_R_960_660_R5_D_xbvwv6.webp")
 room_user_2.photo.attach(io: @image, filename: "#{room_user_2.title}.jpg", content_type: "image/jpg")
 room_user_2.save
 
